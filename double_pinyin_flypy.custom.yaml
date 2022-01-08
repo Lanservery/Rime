@@ -1,0 +1,28 @@
+patch:
+  switches:
+    - name: simplification
+      reset: 1                # 增加這一行：默認啓用「繁→簡」轉換。
+      states: [ 漢字, 汉字 ]
+  
+  # 符号配置
+  "punctuator/import_preset": symbols
+  "recognizer/patterns/punct": "^/([A-Z|a-z]*|[0-9]|10)$"
+
+  # 中英文混输
+  __include: easy_en:/patch
+  
+  # 载入custom_phrase自定义短语
+  engine/translators:
+    - punct_translator
+    - reverse_lookup_translator
+    - script_translator
+    - table_translator@custom_phrase # 表示调用 custom_phrase段编码
+    - table_translator
+    - lua_translator@date_translator
+  custom_phrase:
+    dictionary: ""
+    user_dict: custom_phrase
+    db_class: stabledb
+    enable_completion: false
+    enable_sentence: false
+    initial_quality: 1

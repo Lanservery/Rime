@@ -1,0 +1,36 @@
+customization:
+  distribution_code_name: Weasel
+  distribution_version: 0.14.3
+  generator: "Weasel::UIStyleSettings"
+  modified_time: "Wed Jan  5 01:39:26 2022"
+  rime_version: 1.5.3
+patch:
+  "app_options/code.exe":
+    ascii_mode: true
+  "app_options/emacs.exe":
+    ascii_mode: true
+  "app_options/everything.exe":
+    ascii_mode: true
+  "app_options/explorer.exe":
+    ascii_mode: true
+  "app_options/gimp-2.10.exe":
+    ascii_mode: true
+  "app_options/gvim.exe":
+    ascii_mode: true
+  "app_options/mintty.exe":
+    ascii_mode: true
+  "app_options/photoshop.exe":
+    ascii_mode: true
+  "app_options/windowsterminal.exe":
+    ascii_mode: true
+  "app_options/wsl.exe":
+    ascii_mode: true
+  "app_options/yodaodict.exe":
+    ascii_mode: true
+  "app_options/conemu64.exe":
+    ascii_mode: true
+  "style/color_scheme": psionics
+  "style/font_face": "Microsoft YaHei UI"
+  "style/font_point": 14
+  "style/horizontal": true
+  "style/inline_preedit": false

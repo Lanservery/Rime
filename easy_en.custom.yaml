@@ -1,0 +1,7 @@
+patch:
+  easy_en/use_wordninja_rs_lua_module: true
+  easy_en/wordninja_rs_lua_module_path: "C:/Users/Zhanhua/AppData/Roaming/Rime/dll/wordninja.dll"
+  # translator/enable_sentence: true
+
+  engine/filters:
+    - lua_filter@easy_en_enhance_filter

@@ -1,0 +1,13 @@
+var:
+  last_build_time: 1641646702
+  previously_selected_schema: double_pinyin_flypy
+  schema_access_time:
+    bopomofo: 1631946932
+    bopomofo_tw: 1631946980
+    double_pinyin_flypy: 1641481187
+    easy_en: 1641374298
+    luna_pinyin: 1641394031
+    luna_pinyin_simp: 1641480484
+    luna_quanpin: 1631966590
+    pinyin_simp: 1641392625
+    terra_pinyin: 1631965382
