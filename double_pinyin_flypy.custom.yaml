@@ -4,6 +4,12 @@ patch:
       reset: 1                # 增加這一行：默認啓用「繁→簡」轉換。
       states: [ 漢字, 汉字 ]
   
+  # 以回車清除編碼串，分號、單引號鍵選擇2、3候選
+  key_binder/bindings:
+    - { when: composing, accept: Return, send: Escape }
+    # - { when: has_menu, accept: semicolon, send: 2 }
+    # - { when: has_menu, accept: apostrophe, send: 3 }
+  
   # 符号配置
   "punctuator/import_preset": symbols
   "recognizer/patterns/punct": "^/([A-Z|a-z]*|[0-9]|10)$"
