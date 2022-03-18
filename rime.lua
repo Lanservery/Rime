@@ -38,39 +38,12 @@ librime-lua 样例
 -- 自定义导入模块路径
 -- package.path = package.path .. ";./lua/?.lua"
 
--- I. translators:
-
--- date_translator: 将 `date` 翻译为当前日期
--- 详见 `lua/date_translator.lua`:
-require("date_translator")
-
--- time_translator: 将 `time` 翻译为当前时间
--- 详见 `lua/time_translator.lua`
-require("time_translator")
-
--- number_translator: 将 `/` + 阿拉伯数字 翻译为大小写汉字
--- 详见 `lua/number.lua`
-number_translator = require("number")
-
-
--- II. filters:
-
--- charset_filter: 滤除含 CJK 扩展汉字的候选项
--- charset_comment_filter: 为候选项加上其所属字符集的注释
--- 详见 `lua/charset.lua`
-local charset = require("charset")
-charset_filter = charset.filter
-charset_comment_filter = charset.comment_filter
-
--- single_char_filter: 候选项重排序，使单字优先
--- 详见 `lua/single_char.lua`
-single_char_filter = require("single_char")
-
--- reverse_lookup_filter: 依地球拼音为候选项加上带调拼音的注释
--- 详见 `lua/reverse.lua`
-reverse_lookup_filter = require("reverse")
-
 -- easy_en_enhance_filter: 连续输入增强
 -- 详见 `lua/easy_en.lua`
 local easy_en = require("easy_en")
 easy_en_enhance_filter = easy_en.enhance_filter
+
+-- date_time_translator: 获取当前时间和日期
+-- 详见 `lua/date_time_translator.lua`:
+date_time_translator = require("date_time_translator")
+-- date_time_translator = date_time.date_time_translator

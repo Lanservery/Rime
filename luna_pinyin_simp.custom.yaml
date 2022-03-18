@@ -12,9 +12,12 @@ patch:
     prefix: "v"
     tips: "英语输入"
   
+  # 以回車清除編碼串
+  key_binder/bindings:
+    - { when: composing, accept: Return, send: Escape }
+  
   # 关闭太极图案
   easy_en/enable_sentence: false
-  # translator/enable_sentence: false
 
   # 中英文混输
   __include: easy_en:/patch
@@ -37,8 +40,8 @@ patch:
     - script_translator
     - table_translator@custom_phrase # 表示调用 custom_phrase段编码
     - table_translator
-    - lua_translator@time_translator
-    - lua_translator@date_translator
+    - lua_translator@date_time_translator
+    #- lua_translator@date_translator
     # enable_charset_filter: false
   custom_phrase:
     dictionary: ""

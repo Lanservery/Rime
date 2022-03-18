@@ -10,13 +10,49 @@ patch:
     # - { when: has_menu, accept: semicolon, send: 2 }
     # - { when: has_menu, accept: apostrophe, send: 3 }
   
-  # 符号配置
-  "punctuator/import_preset": symbols
-  "recognizer/patterns/punct": "^/([A-Z|a-z]*|[0-9]|10)$"
+  # 自定义符号与表情配置
+  punctuator:
+    import_preset: symbols
+    symbols:
+      "/fs": [½, ‰, ¼, ⅓, ⅔, ¾, ⅒ ]
+      "/xh": [ ＊, ×, ✱, ★, ☆, ✩, ✧, ❋, ❊, ❉, ❈, ❅, ✿, ✲]
+      "/dq": [🌍,🌎,🌏,🌐,🌑,🌒,🌓,🌔,🌕,🌖,🌗,🌘]
+      "/sg": [🍇,🍉,🍌,🍍,🍎,🍏,🍑,🍒,🍓,🍗,🍦,🎂,🍺,🍻]
+      "/dw": [🙈,🐵,🐈,🐷,🐨,🐼,🐾,🐔,🐬,🐠,🦋]
+      "/bq": [😀,😁,😂,😃,😄,😅,😆,😉,😊,😋,😎,😍,😘,😗]
+      "/ss": [💪,👈,👉,👆,👇,✋,👌,👍,👎,✊,👊,👋,👏,👐]
+    half_shape:
+      "#": "#"
+      "*": "*"
+      "`": "`"
+      "~": "~"
+      "@": "@"
+      "=": "="
+      '\': "、"
+      "%": "%"
+      "$": ["¥", "$", "€", "£", "¢", "¤"]
+      "|": ["|", "｜", "·", "・", "§", "¦", "‖", "︴"]
+      "/": ["/", "÷"]
+      "[": ["【", "〔", "［"]
+      "]": ["】", "〕", "］"]
+      "<": "《"
+      ">": "》"
 
-  # 中英文混输
-  __include: easy_en:/patch
+  recognizer/patterns/punct: "^/([0-9]0?|[A-Za-z]+)$"
+
   
+  # emoji_suggestion
+  switches/@next:
+    name: emoji_suggestion
+    reset: 1
+    states: [ "🈚️️\uFE0E", "🈶️️\uFE0F" ]
+  'engine/filters/@before 0':
+    simplifier@emoji_suggestion
+  emoji_suggestion:
+    opencc_config: emoji.json
+    option_name: emoji_suggestion
+    tips: all
+
   # 载入custom_phrase自定义短语
   engine/translators:
     - punct_translator
@@ -24,7 +60,7 @@ patch:
     - script_translator
     - table_translator@custom_phrase # 表示调用 custom_phrase段编码
     - table_translator
-    - lua_translator@date_translator
+    - lua_translator@date_time_translator
   custom_phrase:
     dictionary: ""
     user_dict: custom_phrase
@@ -32,3 +68,7 @@ patch:
     enable_completion: false
     enable_sentence: false
     initial_quality: 1
+
+  #載入朙月拼音擴充詞庫
+  'translator/dictionary': luna_pinyin.extended
+
